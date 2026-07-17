@@ -1,0 +1,21 @@
+{
+	"name": "LS_CPY_SQL_MIGRATION93",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "DESKTOP-4RU1V8I\\SQLEXPRESS",
+			"database": "DATAENGINEER",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4YTk5OTQ3Ny0wNTgyLTQxM2EtYWY4YS0xZjU4NDdhN2RlMmEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfhostintegrationRuntime2",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

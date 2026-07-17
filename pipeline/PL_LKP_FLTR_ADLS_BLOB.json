@@ -1,0 +1,64 @@
+{
+	"name": "PL_LKP_FLTR_ADLS_BLOB",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKP_FLTR_ADLS_BLOB",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_LKP_FLTR_ADLS_BLOB",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "FLTR_ADLS_BLOB",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "LKP_FLTR_ADLS_BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LKP_FLTR_ADLS_BLOB').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().SIC_code,'1110')\r\n",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-07-15T15:55:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "SCH_TRIGGER_LKP_FLTR93",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_LKP_FLTR_ADLS_BLOB",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 30,
+				"startTime": "2026-07-15T16:58:00",
+				"endTime": "2026-07-16T19:58:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

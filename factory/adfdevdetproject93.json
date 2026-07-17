@@ -1,0 +1,15 @@
+{
+	"name": "adfdevdetproject93",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9a88136f-1953-40ff-8ae3-2623ae632b4f",
+		"tenantId": "2a05a576-d963-4d73-a826-5b4243a61454"
+	}
+}

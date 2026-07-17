@@ -1,0 +1,24 @@
+{
+	"name": "EVENT_TRIGGER_BLOB_TXT_ADLS93",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_BLOB_TXT_ADLS93",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input93/blobs/input93",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/c01e6c3a-333b-4813-81b0-708ab7857f39/resourceGroups/rg_dev_detproject/providers/Microsoft.Storage/storageAccounts/blobstoragepractice93",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
