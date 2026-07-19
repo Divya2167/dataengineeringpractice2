@@ -1,0 +1,21 @@
+{
+	"name": "LS_LKP_SQLSERVER_PARENT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "DESKTOP-4RU1V8I\\SQLEXPRESS",
+			"database": "azure_migration_project",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1MTg2M2FjMi01Y2Y4LTQ2YTctOWZjNy1kMDcyZTk1MWY5NTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfhostintegrationRuntime2",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
