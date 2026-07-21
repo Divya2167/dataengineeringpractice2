@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdevdetproject93"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"LS_ADLS_csv_parquet93_accountKey": {
+			"value": ""
+		},
+		"LS_BLOB_CSV_ADLS93_connectionString": {
+			"value": ""
+		},
+		"LS_Binary_TXT93_connectionString": {
+			"value": ""
+		},
+		"LS_CPY_SQL_MIGRATION93_password": {
+			"value": ""
+		},
+		"LS_LKP_FLTR_ADLS_BLOB_accountKey": {
+			"value": ""
+		},
+		"LS_LKP_SQLSERVER_PARENT_password": {
+			"value": ""
+		},
+		"LS_MULTIPLE_CSV_ADLS_connectionString": {
+			"value": ""
+		},
+		"LS_SQLSERVER_password": {
+			"value": ""
+		},
+		"LS_multiple_csvADLS_accountKey": {
+			"value": ""
+		},
+		"LS_output_binary_ADLS93_accountKey": {
+			"value": ""
+		},
+		"LS_restapi_adls_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keyvaultsql93.vault.azure.net/"
+		},
+		"LS_ADLS_csv_parquet93_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
+		},
+		"LS_CPY_SQL_MIGRATION93_properties_typeProperties_server": {
+			"value": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"LS_CPY_SQL_MIGRATION93_properties_typeProperties_database": {
+			"value": "DATAENGINEER"
+		},
+		"LS_CPY_SQL_MIGRATION93_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"LS_LKP_FLTR_ADLS_BLOB_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
+		},
+		"LS_LKP_SQLSERVER_PARENT_properties_typeProperties_server": {
+			"value": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"LS_LKP_SQLSERVER_PARENT_properties_typeProperties_database": {
+			"value": "azure_migration_project"
+		},
+		"LS_LKP_SQLSERVER_PARENT_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"LS_SQLSERVER_properties_typeProperties_server": {
+			"value": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_properties_typeProperties_database": {
+			"value": "DATAENGINEER"
+		},
+		"LS_SQLSERVER_properties_typeProperties_userName": {
+			"value": "vision_sql"
+		},
+		"LS_multiple_csvADLS_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
+		},
+		"LS_output_binary_ADLS93_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
+		},
+		"LS_restapi_adls_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "DATAENGINEER"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"EVENT_TRIGGER_BLOB_TXT_ADLS93_properties_typeProperties_scope": {
+			"value": "/subscriptions/c01e6c3a-333b-4813-81b0-708ab7857f39/resourceGroups/rg_dev_detproject/providers/Microsoft.Storage/storageAccounts/blobstoragepractice93"
+		}
+	}
+}
