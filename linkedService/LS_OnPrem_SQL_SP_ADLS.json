@@ -1,0 +1,21 @@
+{
+	"name": "LS_OnPrem_SQL_SP_ADLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "DESKTOP-4RU1V8I\\SQLEXPRESS",
+			"database": "azure_migration_project",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5ZDcwY2E4OC05Nzg3LTQxZjctYTc5NC0yYWJlMDFkODQ2NjAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfhostintegrationRuntime2",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
