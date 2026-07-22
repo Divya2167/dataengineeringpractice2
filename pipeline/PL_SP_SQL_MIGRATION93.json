@@ -1,42 +1,6 @@
 {
 	"name": "PL_SP_SQL_MIGRATION93",
 	"properties": {
-		"activities": [
-			{
-				"name": "Stored procedurecustomer93",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[InsertCustomer]",
-					"storedProcedureParameters": {
-						"CustomerID": {
-							"value": "002",
-							"type": "Int32"
-						},
-						"FirstName": {
-							"value": "aruna",
-							"type": "String"
-						},
-						"LastName": {
-							"value": "earni",
-							"type": "String"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "SqlServer1",
-					"type": "LinkedServiceReference"
-				}
-			}
-		],
 		"annotations": [],
 		"lastPublishTime": "2026-07-13T18:49:56Z"
 	},
