@@ -1512,8 +1512,7 @@
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "sqlparquetmigration"
+						"type": "AzureBlobFSLocation"
 					},
 					"compressionCodec": "snappy"
 				},
