@@ -1,8 +1,0 @@
-{
-	"name": "PL_SP_SQL_MIGRATION93",
-	"properties": {
-		"annotations": [],
-		"lastPublishTime": "2026-07-13T18:49:56Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
-}
