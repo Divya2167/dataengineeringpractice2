@@ -43,6 +43,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER'"
 		},
+		"LS_SQL_ADLS_parquet_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_ADLS_parquet'"
+		},
 		"LS_multiple_csvADLS_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_multiple_csvADLS'"
@@ -106,6 +110,10 @@
 		"LS_SQLSERVER_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "vision_sql"
+		},
+		"LS_SQL_ADLS_parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlspractice93.dfs.core.windows.net/"
 		},
 		"LS_multiple_csvADLS_properties_typeProperties_url": {
 			"type": "string",
@@ -250,6 +258,9 @@
 					"LS_LKP_SQLSERVER_PARENT_password": {
 						"value": "[parameters('LS_LKP_SQLSERVER_PARENT_password')]"
 					},
+					"LS_SQL_ADLS_parquet_accountKey": {
+						"value": "[parameters('LS_SQL_ADLS_parquet_accountKey')]"
+					},
 					"SqlServer1_password": {
 						"value": "[parameters('SqlServer1_password')]"
 					},
@@ -270,6 +281,9 @@
 					},
 					"LS_LKP_SQLSERVER_PARENT_properties_typeProperties_userName": {
 						"value": "[parameters('LS_LKP_SQLSERVER_PARENT_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_ADLS_parquet_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_ADLS_parquet_properties_typeProperties_url')]"
 					},
 					"SqlServer1_properties_typeProperties_server": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"

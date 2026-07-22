@@ -32,6 +32,9 @@
 		"LS_SQLSERVER_password": {
 			"value": ""
 		},
+		"LS_SQL_ADLS_parquet_accountKey": {
+			"value": ""
+		},
 		"LS_multiple_csvADLS_accountKey": {
 			"value": ""
 		},
@@ -79,6 +82,9 @@
 		},
 		"LS_SQLSERVER_properties_typeProperties_userName": {
 			"value": "vision_sql"
+		},
+		"LS_SQL_ADLS_parquet_properties_typeProperties_url": {
+			"value": "https://adlspractice93.dfs.core.windows.net/"
 		},
 		"LS_multiple_csvADLS_properties_typeProperties_url": {
 			"value": "https://adlspractice93.dfs.core.windows.net/"

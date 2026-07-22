@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_LKP_SQLSERVER_PARENT'"
 		},
+		"LS_SQL_ADLS_parquet_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_ADLS_parquet'"
+		},
 		"SqlServer1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer1'"
@@ -42,6 +46,10 @@
 		"LS_LKP_SQLSERVER_PARENT_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sa"
+		},
+		"LS_SQL_ADLS_parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlspractice93.dfs.core.windows.net/"
 		},
 		"SqlServer1_properties_typeProperties_server": {
 			"type": "string",
@@ -339,6 +347,27 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('LS_LKP_SQLSERVER_PARENT_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "selfhostintegrationRuntime2",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_ADLS_parquet')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SQL_ADLS_parquet_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_ADLS_parquet_accountKey')]"
 					}
 				},
 				"connectVia": {
@@ -1105,41 +1134,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_LKP_check')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_CPY_SQL_MIGRATION93",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "SqlServerTable",
-				"schema": [
-					{
-						"name": "CustomerID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "FirstName",
-						"type": "varchar"
-					},
-					{
-						"name": "LastName",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "spdemo",
-					"table": "Customers"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_CPY_SQL_MIGRATION93')]"
 			]
 		}
 	]
