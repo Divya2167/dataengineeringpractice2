@@ -63,6 +63,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer1'"
 		},
+		"LS_OnPrem_SQL_SP_ADLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_OnPrem_SQL_SP_ADLS'"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://keyvaultsql93.vault.azure.net/"
@@ -146,6 +150,18 @@
 		"EVENT_TRIGGER_BLOB_TXT_ADLS93_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/c01e6c3a-333b-4813-81b0-708ab7857f39/resourceGroups/rg_dev_detproject/providers/Microsoft.Storage/storageAccounts/blobstoragepractice93"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azure_migration_project"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
 		},
 		"containerUri": {
 			"type": "string",
@@ -264,6 +280,9 @@
 					"SqlServer1_password": {
 						"value": "[parameters('SqlServer1_password')]"
 					},
+					"LS_OnPrem_SQL_SP_ADLS_password": {
+						"value": "[parameters('LS_OnPrem_SQL_SP_ADLS_password')]"
+					},
 					"LS_CPY_SQL_MIGRATION93_properties_typeProperties_server": {
 						"value": "[parameters('LS_CPY_SQL_MIGRATION93_properties_typeProperties_server')]"
 					},
@@ -293,6 +312,15 @@
 					},
 					"SqlServer1_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
+					},
+					"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_server')]"
+					},
+					"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_database')]"
+					},
+					"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_userName')]"
 					}
 				}
 			},

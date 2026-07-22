@@ -155,11 +155,88 @@
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation"
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@concat(dataset().Table_Name,'_',formatDateTime(utcNow(),'yyyyMMddHHmmss'),'.parquet')",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@concat(dataset().Table_Name,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))\n",
+							"type": "Expression"
+						},
+						"fileSystem": "retaildw"
 					},
 					"compressionCodec": "snappy"
 				},
 				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_SP_SQL_ADLS_MIG')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "SP_WATERMARK_UPDATE",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[UpdateWatermark]",
+							"storedProcedureParameters": {
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.TableName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableSchema": {
+									"value": {
+										"value": "@pipeline().parameters.TableSchema",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"WatermarkColumn": {
+									"value": {
+										"value": "@pipeline().parameters.WatermarkColumn",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_OnPrem_SQL_SP_ADLS",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"TableSchema": {
+						"type": "string"
+					},
+					"TableName": {
+						"type": "string"
+					},
+					"WatermarkColumn": {
+						"type": "string"
+					}
+				},
+				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -295,6 +372,43 @@
 											}
 										}
 									]
+								},
+								{
+									"name": "EXEC_UPDATE_WATERMARK_TABLE",
+									"type": "ExecutePipeline",
+									"dependsOn": [
+										{
+											"activity": "CPY_SQL_FULL_INCR_TABLES93",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_SP_SQL_ADLS_MIG",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"TableSchema": {
+												"value": "@pipeline().parameters.TableSchema",
+												"type": "Expression"
+											},
+											"TableName": {
+												"value": "@pipeline().parameters.TableName",
+												"type": "Expression"
+											},
+											"WatermarkColumn": {
+												"value": "@pipeline().parameters.WatermarkColumn",
+												"type": "Expression"
+											}
+										}
+									}
 								}
 							]
 						}
@@ -321,7 +435,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_LKP_MAX_VALUE93')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_PARQUET_MIG')]"
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_PARQUET_MIG')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_SP_SQL_ADLS_MIG')]"
 			]
 		},
 		{

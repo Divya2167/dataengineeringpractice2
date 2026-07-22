@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer1'"
 		},
+		"LS_OnPrem_SQL_SP_ADLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_OnPrem_SQL_SP_ADLS'"
+		},
 		"LS_CPY_SQL_MIGRATION93_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "DESKTOP-4RU1V8I\\SQLEXPRESS"
@@ -60,6 +64,18 @@
 			"defaultValue": "DATAENGINEER"
 		},
 		"SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-4RU1V8I\\SQLEXPRESS"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azure_migration_project"
+		},
+		"LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sa"
 		}
@@ -394,6 +410,32 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('SqlServer1_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "selfhostintegrationRuntime2",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_OnPrem_SQL_SP_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_server')]",
+					"database": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_OnPrem_SQL_SP_ADLS_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_OnPrem_SQL_SP_ADLS_password')]"
 					}
 				},
 				"connectVia": {
@@ -1083,57 +1125,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_restapi_parqet')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PL_SP_SQL_MIGRATION93')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Stored procedurecustomer93",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[InsertCustomer]",
-							"storedProcedureParameters": {
-								"CustomerID": {
-									"value": "002",
-									"type": "Int32"
-								},
-								"FirstName": {
-									"value": "aruna",
-									"type": "String"
-								},
-								"LastName": {
-									"value": "earni",
-									"type": "String"
-								}
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "SqlServer1",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2026-07-13T18:49:56Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
 			]
 		}
 	]
